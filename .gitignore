@@ -83,3 +83,6 @@ Session.vim
 .netrwhist
 *~
 
+.idea/*
+sound_feature/*
+model/*

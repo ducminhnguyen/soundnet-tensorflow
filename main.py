@@ -146,7 +146,9 @@ class Model():
 
         # Data info
         data = glob('./data/*.{}'.format(self.config['subname']))
+        print(glob('./data/ESC-50/*.{}'.format(self.config['subname'])))
         batch_idxs = min(len(data), self.config['train_size']) // self.config['batch_size']
+        print("Start training")
         for epoch in xrange(self.counter//batch_idxs, self.config['epoch']):
 
             for idx in xrange(self.counter%batch_idxs, batch_idxs):

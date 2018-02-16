@@ -1,1 +1,1 @@
-data/demo.mp3
+/home/nguyenmd/workspace/data/LIRIS/data_sound/ACCEDE00000/ACCEDE00000.mp3

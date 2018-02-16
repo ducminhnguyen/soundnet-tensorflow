@@ -1,5 +1,6 @@
 import numpy as np
 import librosa
+import math
 import pdb
 
 local_config = {
@@ -21,15 +22,15 @@ def load_from_list(name_list, config=local_config):
     return audios
 
 
-def load_from_txt(txt_name, config=local_config):
+def load_from_txt(txt_name, position=0, config=local_config, batch_size=1):
     with open(txt_name, 'r') as handle:
         txt_list = handle.read().splitlines()
-
+    n_files = len(txt_list)
     audios = []
-    for idx, audio_path in enumerate(txt_list):
+    for idx, audio_path in enumerate(txt_list[position : min(position + batch_size, n_files)]):
         sound_sample, _ = load_audio(audio_path)
         audios.append(preprocess(sound_sample, config))
-        
+    # print len(audios)
     return audios
 
 
@@ -59,8 +60,8 @@ def preprocess(raw_audio, config=local_config):
         raw_audio = np.tile(raw_audio, length/raw_audio.shape[0] + 1)
 
     # Make equal training length
-    if config['phase'] != 'extract':
-        raw_audio = raw_audio[:length]
+    # if config['phase'] != 'extract':
+    raw_audio = raw_audio[:length]
 
     # Check conditions
     assert len(raw_audio.shape) == 1, "It seems this audio contains two channels, we only need the first channel"

@@ -1,3 +1,13 @@
+# Deep Movie Trailer Generation
+
+To extract all audio features of audio files in a folder:
+Use: python extract_feat.py -t ./audio.list -m 25 -x 26 -s -p extract -o ./sound_feature
+
+Download the sound8.npy model.
+Libraries in this project is prone to incompatibility. Use docker for safety.
+
+Generate audio.list using https://gitlab.eurecom.fr/nguyenmd/deep-movie-trailer
+
 # SoundNet-tensorflow
 TensorFlow implementation of "SoundNet" that learns rich natural sound representations.
 
